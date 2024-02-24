@@ -12,7 +12,7 @@ const ItemLists = ({product}: ItemListsProps) => {
   return (
     <View style={styles.container}>
       <Image source={{uri: product.image || defualtPizzaPng}} 
-        style={styles.image}/>
+        style={styles.image} resizeMode='contain'/>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.price}>${product.price}</Text>
     </View>
@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor:'white',
     borderRadius:20,
+    padding:10,
+    flex:1,  
   },
   image: {
     width:'100%',

@@ -1,12 +1,15 @@
 import products from '@/assets/Food Ordering Asset bundle/data/products';
-import { View } from '@/components/Themed';
 import ItemLists from '@/components/ItemLists';
+import { FlatList } from 'react-native';
 
 export default function MenuScreen() {
   return (
-    <View>
-         <ItemLists product={products[0]}/> 
-         <ItemLists product={products[1]}/> 
-    </View>
+  <FlatList
+  data={products}
+  renderItem={({item}) => <ItemLists product={item}/>}
+  numColumns={2}
+  contentContainerStyle={{gap:10, padding:10}}
+  columnWrapperStyle={{gap:10}}
+  />
   );
 }
