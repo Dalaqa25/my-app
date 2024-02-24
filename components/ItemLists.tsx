@@ -1,6 +1,8 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image,Pressable } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Product } from '@/types';
+import { Link } from 'expo-router';
+
 
 export const defualtPizzaPng = 'https://static-00.iconduck.com/assets.00/no-pizza-icon-2048x1973-3ybp0iar.png'
 
@@ -10,12 +12,14 @@ type ItemListsProps = {
 
 const ItemLists = ({product}: ItemListsProps) => {
   return (
-    <View style={styles.container}>
-      <Image source={{uri: product.image || defualtPizzaPng}} 
-        style={styles.image} resizeMode='contain'/>
-        <Text style={styles.name}>{product.name}</Text>
-        <Text style={styles.price}>${product.price}</Text>
-    </View>
+    <Link href={`/${product.id}`} asChild>
+        <Pressable style={styles.container}>
+          <Image source={{uri: product.image || defualtPizzaPng}} 
+            style={styles.image} resizeMode='contain'/>
+            <Text style={styles.name}>{product.name}</Text>
+            <Text style={styles.price}>${product.price}</Text> 
+        </Pressable>
+      </Link>
   );
 };
 
